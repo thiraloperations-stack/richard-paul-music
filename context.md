@@ -64,10 +64,13 @@ email, Instagram @richardpaulv_.
 
 ## How the page works
 
-- **Film song:** a thumbnail with a play button. On tap it is replaced by a
-  YouTube iframe (`youtube-nocookie.com`, `start=13&autoplay=1`). Nothing from
-  YouTube loads until the tap, so the page opens fast. There is deliberately no
-  end time: the best 30 seconds start at 0:13 but the listener can keep going.
+- **Film song:** a thumbnail with a play button over a YouTube iframe
+  (`youtube-nocookie.com`, `start=13`, `enablejsapi=1`). The iframe is loaded
+  quietly 300ms after page load, hidden under the thumbnail, and a tap sends it
+  a `playVideo` message. Do not go back to creating the iframe on tap with
+  `autoplay=1`: on iPhone Safari that needed two taps, because the player was
+  still loading when the tap happened. There is deliberately no end time: the
+  best 30 seconds start at 0:13 but the listener can keep going.
 - **List ("More of my voice"):** each `<li class="item">` is either
   `data-audio="audio/x.mp3"` (plays with a progress bar in the row),
   `data-video="video/x"` (no extension: the script adds `.mp4` and `.jpg` for

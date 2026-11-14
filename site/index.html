@@ -130,6 +130,16 @@
     border-radius: 14px;
     overflow: hidden;
     background: #000;
+  }
+  .video .cover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
     cursor: pointer;
   }
   .video img, .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
@@ -284,10 +294,12 @@
   </header>
 
   <section class="film" id="film">
-    <button class="video" id="video" type="button" aria-label="Play Aagaya Vennila from 0:13">
-      <img src="img/aagaya-vennila.jpg" alt="" width="1280" height="720">
-      <span class="disc"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
-    </button>
+    <div class="video" id="video-box">
+      <button class="cover" id="video" type="button" aria-label="Play Aagaya Vennila from 0:13">
+        <img src="img/aagaya-vennila.jpg" alt="" width="1280" height="720">
+        <span class="disc"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
+      </button>
+    </div>
     <h2>Aagaya Vennila</h2>
     <p class="meta">From the film Arivaan. Music and lyrics by Karthik ERA, released by Trend Music. Starts at 0:13, where the vocal comes in.</p>
   </section>
@@ -407,28 +419,44 @@
   var items = [].slice.call(document.querySelectorAll('.item'));
   var ytFrame = null;
 
-  function playFilm() {
-    stopList();
-    if (ytFrame) {
-      ytFrame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-      return;
+  // The YouTube player is loaded quietly after the page, hidden under the
+  // thumbnail. Phone browsers only allow sound to start from inside a tap, and
+  // a player that is still loading when the tap happens misses it; a player
+  // that is already loaded can be told to play straight away.
+  var box = document.getElementById('video-box');
+  var YT_ORIGIN = 'https://www.youtube-nocookie.com';
+
+  function ytSend(func) {
+    if (ytFrame && ytFrame.contentWindow) {
+      ytFrame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [] }), YT_ORIGIN);
     }
+  }
+  function loadFilm(autoplay) {
+    if (ytFrame) return;
     ytFrame = document.createElement('iframe');
-    ytFrame.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID +
-      '?start=' + START + '&autoplay=1&rel=0&playsinline=1&enablejsapi=1';
     ytFrame.title = 'Aagaya Vennila, lyrical video';
     ytFrame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     ytFrame.referrerPolicy = 'strict-origin-when-cross-origin';
     ytFrame.allowFullscreen = true;
-    var holder = document.createElement('div');
-    holder.className = 'video';
-    holder.style.cursor = 'default';
-    holder.appendChild(ytFrame);
-    video.replaceWith(holder);
+    ytFrame.addEventListener('load', function () {
+      ytFrame.contentWindow.postMessage('{"event":"listening","id":1,"channel":"widget"}', YT_ORIGIN);
+    });
+    ytFrame.src = YT_ORIGIN + '/embed/' + VIDEO_ID + '?start=' + START +
+      '&rel=0&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(location.origin) +
+      (autoplay ? '&autoplay=1' : '');
+    box.insertBefore(ytFrame, box.firstChild);
   }
-  function pauseFilm() {
-    if (ytFrame) ytFrame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+  function playFilm() {
+    stopList();
+    if (ytFrame) ytSend('playVideo');   // already loaded: plays inside this tap
+    else loadFilm(true);                // tapped before the preload finished
+    video.hidden = true;
   }
+  function pauseFilm() { ytSend('pauseVideo'); }
+
+  window.addEventListener('load', function () {
+    setTimeout(function () { loadFilm(false); }, 300);
+  });
 
   video.addEventListener('click', playFilm);
   document.getElementById('play-film').addEventListener('click', function () {
