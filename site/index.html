@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Richard Paul, singer</title>
+<meta name="description" content="Listen to Richard Paul: the film song Aagaya Vennila from Arivaan, live takes and studio clips.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Richard Paul, singer">
+<meta property="og:description" content="Listen to the film song Aagaya Vennila from Arivaan, live takes and studio clips.">
+<meta property="og:image" content="img/share.jpg">
+<meta name="theme-color" content="#0e1630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gloock&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0e1630;
+    --dusk: #17234b;
+    --moon: #f3efe3;
+    --mist: #a9b3d1;
+    --glow: #f4d58d;
+    --line: rgba(243, 239, 227, 0.14);
+    --display: "Gloock", Georgia, serif;
+    --body: "Figtree", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--night);
+    color: var(--moon);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* a few fixed stars, top of the page only */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 620px;
+    pointer-events: none;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(243,239,227,.8) 50%, transparent 51%),
+      radial-gradient(1px 1px at 28% 62%, rgba(243,239,227,.55) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 47% 9%, rgba(243,239,227,.6) 50%, transparent 51%),
+      radial-gradient(1px 1px at 63% 41%, rgba(243,239,227,.5) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 81% 24%, rgba(243,239,227,.75) 50%, transparent 51%),
+      radial-gradient(1px 1px at 92% 70%, rgba(243,239,227,.5) 50%, transparent 51%),
+      radial-gradient(1px 1px at 6% 84%, rgba(243,239,227,.45) 50%, transparent 51%),
+      radial-gradient(60% 70% at 50% 0%, rgba(43, 63, 122, .55), transparent 70%);
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap {
+    position: relative;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; }
+  h2 { font-size: 1.75rem; line-height: 1.15; }
+  p { margin: 0; }
+  .quiet { color: var(--mist); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 3.25rem 0 2.5rem; }
+  .moon {
+    display: block;
+    width: 9.5rem;
+    height: 9.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 6px rgba(243,239,227,.07), 0 0 70px 12px rgba(244, 213, 141, .22);
+    animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero h1 {
+    font-size: clamp(2.75rem, 12.5vw, 5.5rem);
+    line-height: .95;
+    letter-spacing: -0.015em;
+    margin-top: 1.75rem;
+  }
+  .role { font-size: 1.25rem; color: var(--glow); margin-top: .6rem; }
+  .credit { margin-top: 1rem; max-width: 30rem; color: var(--mist); }
+  .credit strong { color: var(--moon); font-weight: 500; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    min-height: 3.25rem;
+    padding: 0 1.4rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--moon);
+    font: 600 1rem var(--body);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: rgba(243,239,227,.4); }
+  .btn.primary { background: var(--glow); border-color: var(--glow); color: var(--night); }
+  .btn.primary:hover { background: #f8e0a6; }
+  .btn svg { width: 1.1rem; height: 1.1rem; fill: currentColor; flex: none; }
+
+  /* ---------- film song ---------- */
+  .film { padding-bottom: 3.5rem; }
+  .video {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+  .video img, .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+  .video .disc {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 4.5rem; height: 4.5rem;
+    margin: -2.25rem 0 0 -2.25rem;
+    border-radius: 50%;
+    background: var(--glow);
+    color: var(--night);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 30px rgba(0,0,0,.45);
+  }
+  .video .disc svg { width: 1.6rem; height: 1.6rem; fill: currentColor; margin-left: 4px; }
+  .film h2 { margin-top: 1.25rem; }
+  .film .meta { margin-top: .35rem; color: var(--mist); }
+
+  /* ---------- list ---------- */
+  .more h2 { margin-bottom: .35rem; }
+  .list { list-style: none; margin: 1.25rem 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .item { border-bottom: 1px solid var(--line); }
+  .row {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .row .disc {
+    width: 3rem; height: 3rem;
+    border-radius: 50%;
+    border: 1px solid rgba(243,239,227,.35);
+    display: grid;
+    place-items: center;
+  }
+  .row .disc svg { width: 1rem; height: 1rem; fill: var(--moon); }
+  .row .disc .i-play { margin-left: 2px; }
+  .row .disc .i-pause { display: none; }
+  .row:hover .disc { border-color: var(--glow); }
+  .item.on .disc { background: var(--glow); border-color: var(--glow); }
+  .item.on .disc svg { fill: var(--night); }
+  .item.on .i-play { display: none; }
+  .item.on .i-pause { display: block; }
+  .row h3 { font-size: 1.3rem; line-height: 1.2; }
+  .row .what { display: block; color: var(--mist); font-size: .95rem; margin-top: .15rem; }
+  .row .kind { color: var(--mist); font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .bar {
+    display: none;
+    height: 1.5rem;
+    margin: -.25rem 0 .75rem 4rem;
+    cursor: pointer;
+    position: relative;
+  }
+  .bar::before, .bar i {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 3px;
+  }
+  .bar::before { width: 100%; background: var(--line); }
+  .bar i { width: 0; background: var(--glow); }
+  .item.on .bar, .item.started .bar { display: block; }
+
+  .panel { display: none; padding: 0 0 1.25rem; }
+  .item.on .panel { display: block; }
+  .panel iframe {
+    display: block;
+    width: 100%;
+    max-width: 25rem;
+    height: 38rem;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 12px;
+    background: var(--dusk);
+  }
+  .panel p { text-align: center; margin-top: .75rem; font-size: .95rem; color: var(--mist); }
+
+  /* ---------- about + contact ---------- */
+  .about { padding: 3.5rem 0 0; }
+  .about p { margin-top: 1rem; max-width: 34rem; }
+  .contact { padding: 3.5rem 0 6.5rem; }
+  .contact .actions { margin-top: 1.25rem; }
+  .contact dl { margin: 1.75rem 0 0; display: grid; gap: .5rem; }
+  .contact dl div { display: flex; gap: 1rem; }
+  .contact dt { width: 6rem; color: var(--mist); flex: none; }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
+
+  .float {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    transition: opacity .2s, transform .2s;
+  }
+  .float.hide { opacity: 0; transform: translateY(12px); pointer-events: none; }
+
+  @media (min-width: 720px) {
+    .hero { padding-top: 5rem; }
+    .moon { width: 12rem; height: 12rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .moon { animation: none; }
+    .float { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><path d="M3 1.5h3.5v13H3zM9.5 1.5H13v13H9.5z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.300A10 10 0 1 0 12 2zm-3.200 5h1.300l1 2.500-.900 1.200c.7 1.400 1.700 2.400 3.100 3.100l1.200-.900 2.500 1v1.300c0 .700-.800 1.300-1.800 1.300A7.700 7.700 0 0 1 7.500 8.800c0-1 .600-1.800 1.300-1.800z" fill-rule="evenodd"/></symbol>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <img class="moon" src="img/richard-paul.jpg" alt="Richard Paul" width="720" height="720">
+    <h1>Richard Paul</h1>
+    <p class="role">Singer</p>
+    <p class="credit">Voice of <strong>Aagaya Vennila</strong> from the Tamil film <strong>Arivaan</strong>, composed by Karthik ERA.</p>
+    <div class="actions" id="hero-actions">
+      <button class="btn primary" id="play-film" type="button">
+        <svg aria-hidden="true"><use href="#i-play"/></svg>Play the film song
+      </button>
+      <a class="btn" href="https://wa.me/918667390029?text=Hi%20Richard%2C%20I%20heard%20your%20songs%20and%20would%20like%20to%20talk%20about%20a%20project.">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Message on WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <section class="film" id="film">
+    <button class="video" id="video" type="button" aria-label="Play Aagaya Vennila from 0:13">
+      <img src="img/aagaya-vennila.jpg" alt="" width="1280" height="720">
+      <span class="disc"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
+    </button>
+    <h2>Aagaya Vennila</h2>
+    <p class="meta">From the film Arivaan. Music and lyrics by Karthik ERA, released by Trend Music. Starts at 0:13, where the vocal comes in.</p>
+  </section>
+
+  <section class="more">
+    <h2>More of my voice</h2>
+    <p class="quiet">Live takes and studio clips. Tap one to listen here.</p>
+
+    <ol class="list">
+      <li class="item" data-ig="C4ACXrdSyqv">
+        <button class="row" type="button" aria-expanded="false">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Raasathi</h3><span class="what">My natural voice</span></span>
+          <span class="kind">Instagram</span>
+        </button>
+        <div class="panel"></div>
+      </li>
+
+      <li class="item" data-ig="DN5drdkEvvT">
+        <button class="row" type="button" aria-expanded="false">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Nee Singam Dhan</h3><span class="what">Range</span></span>
+          <span class="kind">Instagram</span>
+        </button>
+        <div class="panel"></div>
+      </li>
+
+      <li class="item" data-audio="audio/ennodu-nee-irundhal.mp3">
+        <button class="row" type="button">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Ennodu Nee Irundhal</h3><span class="what">Studio clip</span></span>
+          <span class="kind">0:50</span>
+        </button>
+        <div class="bar"><i></i></div>
+      </li>
+
+      <li class="item" data-audio="audio/ennodu-nee-irundhal-harmony.mp3">
+        <button class="row" type="button">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Ennodu Nee Irundhal, harmony</h3><span class="what">Layered harmonies, studio clip</span></span>
+          <span class="kind">0:14</span>
+        </button>
+        <div class="bar"><i></i></div>
+      </li>
+
+      <li class="item" data-audio="audio/koodapirannor.mp3">
+        <button class="row" type="button">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Koodapirannor</h3><span class="what">Studio clip</span></span>
+          <span class="kind">0:41</span>
+        </button>
+        <div class="bar"><i></i></div>
+      </li>
+
+      <li class="item" data-ig="DM4MSpeSYNf">
+        <button class="row" type="button" aria-expanded="false">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Nee Pogaathe</h3><span class="what">High pitch and modulations</span></span>
+          <span class="kind">Instagram</span>
+        </button>
+        <div class="panel"></div>
+      </li>
+
+      <li class="item" data-ig="C5dcl3vyl7l">
+        <button class="row" type="button" aria-expanded="false">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Vaa Machane</h3><span class="what">An all-round performance</span></span>
+          <span class="kind">Instagram</span>
+        </button>
+        <div class="panel"></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="about">
+    <h2>About me</h2>
+    <p>I'm a singer, and music is where I'm headed full time. I've sung many songs over the years; the ones on this page are the pieces I'd want you to hear first.</p>
+    <p>I also work as a platform engineer. I enjoy both, so for now I do both as time allows.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Work with me</h2>
+    <p class="quiet" style="margin-top:.5rem">Tell me about the song or the project and I'll get back to you.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://wa.me/918667390029?text=Hi%20Richard%2C%20I%20heard%20your%20songs%20and%20would%20like%20to%20talk%20about%20a%20project.">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Message on WhatsApp
+      </a>
+      <a class="btn" href="mailto:richard.paul.v.72@gmail.com?subject=Singing%20enquiry">Send an email</a>
+    </div>
+    <dl>
+      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/918667390029">+91 86673 90029</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:richard.paul.v.72@gmail.com">richard.paul.v.72@gmail.com</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/richardpaulv_/">@richardpaulv_</a></dd></div>
+    </dl>
+  </section>
+
+</div>
+
+<a class="btn primary float hide" id="float" href="https://wa.me/918667390029?text=Hi%20Richard%2C%20I%20heard%20your%20songs%20and%20would%20like%20to%20talk%20about%20a%20project.">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
+</a>
+
+<script>
+(function () {
+  var VIDEO_ID = 'tasmzYgkVbE';
+  var START = 13;
+  var video = document.getElementById('video');
+  var items = [].slice.call(document.querySelectorAll('.item'));
+  var ytFrame = null;
+
+  function playFilm() {
+    stopList();
+    if (ytFrame) {
+      ytFrame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      return;
+    }
+    ytFrame = document.createElement('iframe');
+    ytFrame.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID +
+      '?start=' + START + '&autoplay=1&rel=0&playsinline=1&enablejsapi=1';
+    ytFrame.title = 'Aagaya Vennila, lyrical video';
+    ytFrame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    ytFrame.referrerPolicy = 'strict-origin-when-cross-origin';
+    ytFrame.allowFullscreen = true;
+    var holder = document.createElement('div');
+    holder.className = 'video';
+    holder.style.cursor = 'default';
+    holder.appendChild(ytFrame);
+    video.replaceWith(holder);
+  }
+  function pauseFilm() {
+    if (ytFrame) ytFrame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+  }
+
+  video.addEventListener('click', playFilm);
+  document.getElementById('play-film').addEventListener('click', function () {
+    document.getElementById('film').scrollIntoView({ block: 'start' });
+    playFilm();
+  });
+
+  function stopItem(item) {
+    if (!item.classList.contains('on')) return;
+    item.classList.remove('on');
+    if (item.audio) item.audio.pause();
+    if (item.dataset.ig) {
+      item.querySelector('.panel').innerHTML = '';
+      item.querySelector('.row').setAttribute('aria-expanded', 'false');
+    }
+  }
+  function stopList(except) {
+    items.forEach(function (it) { if (it !== except) stopItem(it); });
+  }
+
+  items.forEach(function (item) {
+    var row = item.querySelector('.row');
+
+    if (item.dataset.audio) {
+      var bar = item.querySelector('.bar');
+      var fill = bar.querySelector('i');
+      row.addEventListener('click', function () {
+        if (!item.audio) {
+          item.audio = new Audio(item.dataset.audio);
+          item.audio.addEventListener('timeupdate', function () {
+            fill.style.width = (item.audio.currentTime / item.audio.duration * 100 || 0) + '%';
+          });
+          item.audio.addEventListener('ended', function () {
+            item.classList.remove('on', 'started');
+            fill.style.width = '0';
+          });
+        }
+        if (item.classList.contains('on')) { stopItem(item); return; }
+        pauseFilm();
+        stopList(item);
+        item.classList.add('on', 'started');
+        item.audio.play();
+      });
+      bar.addEventListener('click', function (e) {
+        if (!item.audio || !item.audio.duration) return;
+        var r = bar.getBoundingClientRect();
+        item.audio.currentTime = (e.clientX - r.left) / r.width * item.audio.duration;
+      });
+    }
+
+    if (item.dataset.ig) {
+      row.addEventListener('click', function () {
+        if (item.classList.contains('on')) { stopItem(item); return; }
+        pauseFilm();
+        stopList(item);
+        var url = 'https://www.instagram.com/p/' + item.dataset.ig + '/';
+        var title = item.querySelector('h3').textContent;
+        item.querySelector('.panel').innerHTML =
+          '<iframe src="' + url + 'embed/" title="' + title + ' on Instagram" loading="lazy" allow="autoplay; encrypted-media" allowfullscreen scrolling="no"></iframe>' +
+          '<p>Not loading? <a href="' + url + '" target="_blank" rel="noopener">Open it on Instagram</a></p>';
+        item.classList.add('on');
+        row.setAttribute('aria-expanded', 'true');
+      });
+    }
+  });
+
+  // floating WhatsApp button: only when neither the hero buttons nor the contact section is on screen
+  var float = document.getElementById('float');
+  var seen = {};
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+      float.classList.toggle('hide', !!(seen['hero-actions'] || seen['contact']));
+    });
+    io.observe(document.getElementById('hero-actions'));
+    io.observe(document.getElementById('contact'));
+  }
+})();
+</script>
+</body>
+</html>
