@@ -112,7 +112,7 @@ night-sky page with the portrait as the moon.
 
 ## Hosting
 
-Live at https://thiraloperations-stack.github.io/richard-paul-music/
+Live at https://richard.thiral.io/
 
 GitHub Pages, deployed by `.github/workflows/pages.yml`: every push to `main`
 that touches `site/` publishes the `site/` folder automatically (about a
