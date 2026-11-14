@@ -1,2 +1,5 @@
 .DS_Store
 *.wav
+# raw video originals; the web copies live in site/video/
+/raasathi.mp4
+/videos/*.mp4

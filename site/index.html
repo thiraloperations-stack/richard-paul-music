@@ -8,7 +8,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Richard Paul, singer">
 <meta property="og:description" content="Listen to the film song Aagaya Vennila from Arivaan, live takes and studio clips.">
-<meta property="og:image" content="img/share.jpg">
+<meta property="og:url" content="https://thiraloperations-stack.github.io/richard-paul-music/">
+<meta property="og:image" content="https://thiraloperations-stack.github.io/richard-paul-music/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0e1630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -213,6 +217,15 @@
     border-radius: 12px;
     background: var(--dusk);
   }
+  .panel video {
+    display: block;
+    width: 100%;
+    max-width: 22rem;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #000;
+  }
   .panel p { text-align: center; margin-top: .75rem; font-size: .95rem; color: var(--mist); }
 
   /* ---------- about + contact ---------- */
@@ -284,20 +297,20 @@
     <p class="quiet">Live takes and studio clips. Tap one to listen here.</p>
 
     <ol class="list">
-      <li class="item" data-ig="C4ACXrdSyqv">
+      <li class="item" data-video="video/raasathi" data-ig="C4ACXrdSyqv">
         <button class="row" type="button" aria-expanded="false">
           <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
           <span><h3>Raasathi</h3><span class="what">My natural voice</span></span>
-          <span class="kind">Instagram</span>
+          <span class="kind">1:07</span>
         </button>
         <div class="panel"></div>
       </li>
 
-      <li class="item" data-ig="DN5drdkEvvT">
+      <li class="item" data-video="video/nee-singam-dhan" data-ig="DN5drdkEvvT">
         <button class="row" type="button" aria-expanded="false">
           <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
           <span><h3>Nee Singam Dhan</h3><span class="what">Range</span></span>
-          <span class="kind">Instagram</span>
+          <span class="kind">1:20</span>
         </button>
         <div class="panel"></div>
       </li>
@@ -334,6 +347,15 @@
           <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
           <span><h3>Nee Pogaathe</h3><span class="what">High pitch and modulations</span></span>
           <span class="kind">Instagram</span>
+        </button>
+        <div class="panel"></div>
+      </li>
+
+      <li class="item" data-video="video/monica">
+        <button class="row" type="button" aria-expanded="false">
+          <span class="disc"><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg></span>
+          <span><h3>Monica</h3><span class="what">Contemporary</span></span>
+          <span class="kind">1:09</span>
         </button>
         <div class="panel"></div>
       </li>
@@ -418,7 +440,10 @@
     if (!item.classList.contains('on')) return;
     item.classList.remove('on');
     if (item.audio) item.audio.pause();
-    if (item.dataset.ig) {
+    if (item.video) {
+      item.video.pause();
+      item.querySelector('.row').setAttribute('aria-expanded', 'false');
+    } else if (item.dataset.ig) {
       item.querySelector('.panel').innerHTML = '';
       item.querySelector('.row').setAttribute('aria-expanded', 'false');
     }
@@ -457,7 +482,33 @@
       });
     }
 
-    if (item.dataset.ig) {
+    if (item.dataset.video) {
+      row.addEventListener('click', function () {
+        if (item.classList.contains('on')) { stopItem(item); return; }
+        pauseFilm();
+        stopList(item);
+        if (!item.video) {
+          var v = document.createElement('video');
+          v.src = item.dataset.video + '.mp4';
+          v.poster = item.dataset.video + '.jpg';
+          v.controls = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+          item.video = v;
+          var panel = item.querySelector('.panel');
+          panel.appendChild(v);
+          if (item.dataset.ig) {
+            var note = document.createElement('p');
+            note.innerHTML = '<a href="https://www.instagram.com/p/' + item.dataset.ig +
+              '/" target="_blank" rel="noopener">Watch it on Instagram</a>';
+            panel.appendChild(note);
+          }
+        }
+        item.classList.add('on');
+        row.setAttribute('aria-expanded', 'true');
+        item.video.play();
+      });
+    } else if (item.dataset.ig) {
       row.addEventListener('click', function () {
         if (item.classList.contains('on')) { stopItem(item); return; }
         pauseFilm();
