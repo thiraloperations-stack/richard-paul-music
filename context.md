@@ -117,17 +117,29 @@ night-sky page with the portrait as the moon.
 
 Live at https://richard.thiral.io/
 
-GitHub Pages, deployed by `.github/workflows/pages.yml`: every push to `main`
-that touches `site/` publishes the `site/` folder automatically (about a
-minute). The link-preview tags (`og:url`, `og:image`) in `index.html` contain
-this address, so update them if the site moves to a custom domain.
+- **GitHub Pages**, deployed by `.github/workflows/pages.yml`: every push to
+  `main` that touches `site/` publishes the `site/` folder automatically (about
+  a minute). Repo: `thiraloperations-stack/richard-paul-music`. It is public
+  because the free plan only serves Pages from public repos.
+- **Domain:** Richard owns `thiral.io` (DNS at Cloudflare). The record is
+  `CNAME richard -> thiraloperations-stack.github.io`, set to "DNS only" (grey
+  cloud) so GitHub can issue the HTTPS certificate. The custom domain is set in
+  the repo's Pages settings, with HTTPS enforced. The old
+  `thiraloperations-stack.github.io/richard-paul-music/` address redirects here.
+- The link-preview tags (`og:url`, `og:image`) in `index.html` contain the
+  live address; update them if it ever changes.
 
-## Not done yet
+## Status
 
-1. **Real-device check.** Layout was verified in screenshots at 390px and
-   1280px, and one local video was played in a test browser. Tapping every
-   player on an actual phone has not been verified.
-2. **Custom domain** (optional): the current address carries the GitHub account
-   name rather than Richard's.
-3. Open questions for Richard: should the film song hard-stop after 30 seconds,
+Confirmed by Richard on his iPhone (Safari): the film song starts on the first
+tap after the preload fix.
+
+Still open:
+
+1. The other players (local videos, audio clips, the two Instagram embeds) and
+   the WhatsApp link preview have not been explicitly confirmed on a phone.
+2. Nee Pogaathe and Vaa Machane still use Instagram embeds; switch them to
+   local video if Richard provides the files.
+3. Monica has no Instagram link.
+4. Open questions for Richard: should the film song hard-stop after 30 seconds,
    and is +91 the right country code.
