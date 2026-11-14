@@ -59,7 +59,7 @@ names (#1 is highest). The page follows that order strictly.
 Credit for #1 comes from the YouTube description: "Singer: Richard Paul",
 composed, arranged and produced by Karthik ERA, released by Trend Music.
 
-Contact details on the page: WhatsApp +91 86673 90029 (the +91 was assumed),
+Contact details on the page: WhatsApp +91 86673 90029,
 email, Instagram @richardpaulv_.
 
 ## How the page works
@@ -141,5 +141,6 @@ Still open:
 2. Nee Pogaathe and Vaa Machane still use Instagram embeds; switch them to
    local video if Richard provides the files.
 3. Monica has no Instagram link.
-4. Open questions for Richard: should the film song hard-stop after 30 seconds,
-   and is +91 the right country code.
+
+Settled with Richard: +91 is the right country code, and the film song should
+keep playing past the first 30 seconds (no end time).
